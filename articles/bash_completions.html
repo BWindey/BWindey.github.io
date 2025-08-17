@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bash Completions</title>
+    <meta name="description" content="An article about bash completions">
+  </head>
+
+  <body>
+		<h1>Bash Completions</h1>
+		<p>
+			Working in the terminal is fun. Using commands to do actions can feel
+			like magic sometimes, and only needing to rely on your keyboard lets you
+			go fast.
+			Tab completions are a big part of the magic of the commandline. They allow
+			us to complete long flags or subcommands way faster, and can also serve as
+			a discovery of the available flags and arguments.
+		</p>
+		<p>
+			Good tab completions require an understanding of the command itself. This
+			means that more complex CLIs will require more complex completion scripts,
+			and perhaps the command even starts providing some subcommands or flags
+			to help out the completion script by providing more info.
+			But what if we take this idea even further, and just let the command do
+			its own completion? It already has to do argument parsing, so it feels
+			like it should be quite easy to add in a little bit of extra code to
+			also allow completing its own arguments and flags.
+		</p>
+	</body>
+</html>
