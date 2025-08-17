@@ -26,5 +26,79 @@
 			like it should be quite easy to add in a little bit of extra code to
 			also allow completing its own arguments and flags.
 		</p>
+
+		<h2>A quick refresher on programmable Bash completions</h2>
+		<p>
+			When Bash calls on a completion script, it sets seven usefull environment
+			variables:
+			<pre><code>
+	$1: name of command ('cat', 'ls', 'git', ...)
+	$2: current word being completed
+	$3: word before current word being completed
+
+	$COMP_WORDS: array of all words typed on commandline
+	$COMP_CWORD: amount of all words typed on commandline
+	$COMP_LINE: string of all words typed on commandline
+	$COMP_POINT: index in string where user-cursor is in $COMP_LINE
+			</code></pre>
+			See
+			<a href="https://www.gnu.org/software/bash/manual/html_node/Programmable-Completion.html">
+				the Bash manual for programmable completions</a>
+			and for
+			<a href="https://www.gnu.org/software/bash/manual/html_node/Bash-Variables.html">
+				set environment variables</a>
+			for more information.
+
+			For simple commands, it's often enough to only use <code>$2</code> and
+			<code>$3</code>. More complex commands, where allowed values for arguments
+			can change in the presence of some flags might need the <code>$COMP_...</code>
+			family of environment variables.
+			Note that Bash also allows you to use a command to do the completions with
+			'<code>compgen -C &ltcommand&gt</code>',
+			but that limits the fun stuff we can do a bit, and also will be less
+			shell-independent.
+		</p>
+
+		<h2>Theory of integrating completions</h2>
+		<p>
+			The main idea now is to adapt our command that we're writing completions
+			for so that it gets a new subcommand (or flag, you choose how your CLI
+			looks) which will take in 2 arguments; the first will be everything written
+			on the commandline up to the cursor, the second will be the rest. The
+			result of the completions will be written to standard output with one
+			entry per line.
+			Then all we need is a small wrapper-script written in Bash that will
+			call upon the main command with these arguments:
+		<pre><code>
+	function _complete_my_command() {
+		local first_part="${COMP_LINE[:$COMP_POINT]}"
+		local second_part="${COMP_LINE[$COMP_POINT:]}"
+		mapfile -t COMPREPLY &lt &lt(my_command complete "$first_part" "$second_part")
+	}
+
+	compgen -F _complete_my_command my_command
+		</code></pre>
+		</p>
+
+		<p>
+			Now '<code>my_command complete</code>' can do its magic by inspecting
+			both parts, analyzing context if needed, and print out what can be
+			completed.
+		</p>
+
+		<h2>Implementing this in Python</h2>
+		<p>
+			To test this whole idea, I went ahead and implemented this for a
+			relatively simple
+			<a href="https://github.com/BWindey/DodonaCLI">CLI in Python</a>.
+			The <a href="https://github.com/BWindey/DodonaCLI/blob/7f49a395bf1a9e873c58dde4ce9c1ad5bf45cb12/dodonacli_completion_script.sh">
+				original completion script</a> was a simple bash script.
+		</p>
+
+		<p>
+			I would love to show you the result, but I actually did not write that yet...
+			So you'll have to wait untill I return to this project and blogpost.
+			At least you cannot find this article as it is not linked anywhere, I think.
+		</p>
 	</body>
 </html>
