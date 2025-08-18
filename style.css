@@ -39,14 +39,9 @@
 	--gray-dim:   #A89984;
 	--orange-dim: #D65D0E;
 
-	--ff-mono: "Pixel Code";
+	--ff-mono: "Pixel Code", monospace;
 
 	--corner-radius: 6px; /* will be used everywhere for consistency */
-}
-
-/* General styles applied everywhere */
-* {
-	font-family: var(--ff-mono);
 }
 
 /* Markup for links that still looks like a link but fits the Gruvbox theme */
@@ -78,10 +73,14 @@ h2 {
 }
 
 
+code {
+	background: var(--bg-secondary);
+	border-radius: var(--corner-radius);
+	padding: 0.2em 0.4em;
+}
 pre {
     background: var(--bg-secondary);
-	border-radius: 6px;
-    font-family: monospace;
+	border-radius: var(--corner-radius);
     font-size: 15px;
     line-height: 1.6;
     margin-bottom: 1.6em;
@@ -93,22 +92,24 @@ pre {
 	font-family: var(--ff-mono);
 }
 
-.red { color: #FB4934; }
-.green { color: #B8BB26; }
+
+/* Classes for code snippets */
+.red    { color: #FB4934; }
+.green  { color: #B8BB26; }
 .yellow { color: #FABD2F; }
-.blue { color: #83A598; }
+.blue   { color: #83A598; }
 .purple { color: #D3869B; }
-.aqua { color: #8EC07C; }
-.gray { color: #928374; }
+.aqua   { color: #8EC07C; }
+.gray   { color: #928374; }
 .orange { color: #FE8019; }
 
-.red-dim { color: #CC2412; }
-.green-dim { color: #98971A; }
+.red-dim    { color: #CC2412; }
+.green-dim  { color: #98971A; }
 .yellow-dim { color: #D79921; }
-.blue-dim { color: #458588; }
+.blue-dim   { color: #458588; }
 .purple-dim { color: #B16286; }
-.aqua-dim { color: #689D6A; }
-.gray-dim { color: #A89984; }
+.aqua-dim   { color: #689D6A; }
+.gray-dim   { color: #A89984; }
 .orange-dim { color: #D65D0E; }
 
 .bold { font-weight: bold; }

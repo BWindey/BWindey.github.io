@@ -32,14 +32,14 @@
 		<p>
 			When Bash calls on a completion script, it sets seven usefull environment
 			variables:
-			<pre><code>$1: name of command ('cat', 'ls', 'git', ...)
+			<pre>$1: name of command ('cat', 'ls', 'git', ...)
 $2: current word being completed
 $3: word before current word being completed
 
 $COMP_WORDS: array of all words typed on commandline
 $COMP_CWORD: amount of all words typed on commandline
 $COMP_LINE: string of all words typed on commandline
-$COMP_POINT: index in string where user-cursor is in $COMP_LINE</code></pre>
+$COMP_POINT: index in string where user-cursor is in $COMP_LINE</pre>
 			See
 			<a href="https://www.gnu.org/software/bash/manual/html_node/Programmable-Completion.html">
 				the Bash manual for programmable completions</a>
@@ -53,7 +53,7 @@ $COMP_POINT: index in string where user-cursor is in $COMP_LINE</code></pre>
 			can change in the presence of some flags might need the <code>$COMP_...</code>
 			family of environment variables.
 			Note that Bash also allows you to use a command to do the completions with
-			'<code>compgen -C &lt;command&gt;</code>',
+			<code>compgen -C &lt;command&gt;</code>,
 			but that limits the fun stuff we can do a bit, and also will be less
 			shell-independent.
 		</p>
@@ -78,7 +78,7 @@ $COMP_POINT: index in string where user-cursor is in $COMP_LINE</code></pre>
 <span class="orange">compgen</span> <span class="blue">-F _complete_my_command my_command</span></pre>
 		</p>
 		<p>
-			Now '<code>my_command complete</code>' can do its magic by inspecting
+			Now <code>my_command complete</code> can do its magic by inspecting
 			both parts, analyzing context if needed, and print out what can be
 			completed.
 		</p>
