@@ -1,26 +1,12 @@
 /* Gruvbox colors from https://github.com/YV31/gruvbox-css/ */
-@media (prefers-color-scheme: dark) {
-	:root {
-		--bg-primary:     #282828;
-		--bg-secondary:   #3C3836;
-		--text-primary:   #FBF1C7;
-		--text-secondary: #EBDBB2;
-		--highlight:      #B8BB26;
-	}
-}
-
-/* Note: light mode isn't great, but kinda works */
-@media (prefers-color-scheme: light) {
-	:root {
-		--bg-primary:     #FBF1C7;
-		--bg-secondary:   #EBDBB2;
-		--text-primary:   #282828;
-		--text-secondary: #3C3836;
-		--highlight:      #458588;
-	}
-}
-
+/* No light mode (yet) as it does not look good */
 :root {
+	--bg-primary:     #282828;
+	--bg-secondary:   #3C3836;
+	--text-primary:   #FBF1C7;
+	--text-secondary: #EBDBB2;
+	--highlight:      #B8BB26;
+
 	--red:    #FB4934;
 	--green:  #B8BB26;
 	--yellow: #FABD2F;
