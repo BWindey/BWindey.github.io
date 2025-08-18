@@ -1,0 +1,114 @@
+/* Gruvbox colors from https://github.com/YV31/gruvbox-css/ */
+@media (prefers-color-scheme: dark) {
+	:root {
+		--bg-primary:     #282828;
+		--bg-secondary:   #3C3836;
+		--text-primary:   #FBF1C7;
+		--text-secondary: #EBDBB2;
+		--highlight:      #B8BB26;
+	}
+}
+
+/* Note: light mode isn't great, but kinda works */
+@media (prefers-color-scheme: light) {
+	:root {
+		--bg-primary:     #FBF1C7;
+		--bg-secondary:   #EBDBB2;
+		--text-primary:   #282828;
+		--text-secondary: #3C3836;
+		--highlight:      #458588;
+	}
+}
+
+:root {
+	--red:    #FB4934;
+	--green:  #B8BB26;
+	--yellow: #FABD2F;
+	--blue:   #83A598;
+	--purple: #D3869B;
+	--aqua:   #8EC07C;
+	--gray:   #928374;
+	--orange: #FE8019;
+
+	--red-dim:    #CC2412;
+	--green-dim:  #98971A;
+	--yellow-dim: #D79921;
+	--blue-dim:   #458588;
+	--purple-dim: #B16286;
+	--aqua-dim:   #689D6A;
+	--gray-dim:   #A89984;
+	--orange-dim: #D65D0E;
+
+	--ff-mono: "Pixel Code";
+
+	--corner-radius: 6px; /* will be used everywhere for consistency */
+}
+
+/* General styles applied everywhere */
+* {
+	font-family: var(--ff-mono);
+}
+
+/* Markup for links that still looks like a link but fits the Gruvbox theme */
+a {
+	color: var(--blue);
+}
+a:hover {
+	color: var(--blue-dim);
+}
+
+
+/* Layout of the main body */
+body {
+	height: 100vh;
+	max-width: 1000px;
+	margin: 0 auto; /* Center it horizontally */
+	padding: 0 3em; /* Some padding for smaller windows */
+	color: var(--text-primary);
+	background-color: var(--bg-primary);
+}
+
+h1 {
+	color: var(--green);
+	padding: 0 3em 0 0;
+}
+h2 {
+	color: var(--yellow);
+	padding: 1em 0 0 0;
+}
+
+
+pre {
+    background: var(--bg-secondary);
+	border-radius: 6px;
+    font-family: monospace;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 1.6em;
+    max-width: 100%;
+    overflow: auto;
+    padding: 1em 1.5em;
+    display: block;
+    word-wrap: break-word;
+	font-family: var(--ff-mono);
+}
+
+.red { color: #FB4934; }
+.green { color: #B8BB26; }
+.yellow { color: #FABD2F; }
+.blue { color: #83A598; }
+.purple { color: #D3869B; }
+.aqua { color: #8EC07C; }
+.gray { color: #928374; }
+.orange { color: #FE8019; }
+
+.red-dim { color: #CC2412; }
+.green-dim { color: #98971A; }
+.yellow-dim { color: #D79921; }
+.blue-dim { color: #458588; }
+.purple-dim { color: #B16286; }
+.aqua-dim { color: #689D6A; }
+.gray-dim { color: #A89984; }
+.orange-dim { color: #D65D0E; }
+
+.bold { font-weight: bold; }
