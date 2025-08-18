@@ -25,9 +25,37 @@
 	--gray-dim:   #A89984;
 	--orange-dim: #D65D0E;
 
-	--ff-mono: "Pixel Code", monospace;
+	--ff-mono: "PixelCode", monospace;
 
 	--corner-radius: 6px; /* will be used everywhere for consistency */
+}
+
+@font-face {
+  font-family: 'PixelCode';
+  src: url('/fonts/PixelCode/PixelCode.mini.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'PixelCode';
+  src: url('/fonts/PixelCode/PixelCode-Bold.mini.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'PixelCode';
+  src: url('/fonts/PixelCode/PixelCode-Italic.mini.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'PixelCode';
+  src: url('/fonts/PixelCode/PixelCode-Bold-Italic.mini.woff2') format('woff2');
+  font-weight: 700;
+  font-style: italic;
 }
 
 /* Markup for links that still looks like a link but fits the Gruvbox theme */
