@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Creating this blogging site</title>
+		<meta name="description" content="An article about creating this website">
+		<link href="/style.css" rel="stylesheet">
+		<link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
+  </head>
+
+	<body>
+		<h1>Creating this blogging site</h1>
+		<p>
+			While most of the stuff to create this is almost not worth talking about,
+			I wanted to still write a short article about it, mainly to highlight
+			the codesnippets (with their fonts).
+		</p>
+
+		<h2>First steps</h2>
+		<p>
+			First off, hosting. Because I'm cheap, I went with
+			<a href="https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site">
+				Github Pages</a>, which
+			you probably noticed with the <code>github.io</code> in the URL.
+			Aside from free hosting, it is also just very easy to work with as it's
+			just a standard git repository that I push. Github Pages provides
+			built-in support for <a href="https://jekyllrb.com/">Jekyll</a>, but I
+			felt adventurous and went for my own handwritten HTML and CSS.
+			You can check it out at my Github repo:
+			<a href="github.com/BWindey/BWindey.github.io">
+				github.com/BWindey/BWindey.github.io</a>.
+		</p>
+
+		<p>
+			The site is organised with an <code>index.html</code> as entry point,
+			a single <code>style.css</code> file that's included in all html files,
+			a folder <code>articles/</code> with all articles as html files and a
+			folder <code>fonts/PixelCode/</code> which hosts the font used for
+			code-snippets; more on that below.
+		</p>
+
+		<pre>$ <span class="green">tree</span>
+.
+├── <span class="blue bold">articles/</span>
+│   ├── ...
+│   └── creating_this_site.html
+├── <span class="purple">favicon.png</span>
+├── <span class="blue bold">fonts/</span>
+│   └── <span class="blue bold">PixelCode/</span>
+│       ├── LICENSE
+│       ├── PixelCode-Bold-Italic.mini.woff2
+│       ├── PixelCode-Bold.mini.woff2
+│       ├── PixelCode-Italic.mini.woff2
+│       └── PixelCode.mini.woff2
+├── index.html
+└── style.css</pre>
+
+		<h2>Font</h2>
+		<p>
+			I'm a big fan of the
+			<a href="https://qwerasd205.github.io/PixelCode/">PixelCode font</a>.
+			Originally I used it for the whole site, but that felt a bit too busy
+			and makes it harder for the reader to set their own font.
+			For codeblocks however I wanted to still leave my mark, and decided to
+			"force" the PixelCode font.
+		</p>
+
+		<p>
+			Most users probably do not have PixelCode installed on their system, so
+			I need to distribute it. This is where the fun began. Downloading the font
+			from the website gave a zip of over 600 kilobytes. That made me think,
+			is there a way to not send that many bytes to the reader?
+			The zip contained all variations of the font, each being around 30 kilobytes,
+			so for each variant that's used on the page there will be 30 kilobytes
+			transfered. I removed all variants except for normal, bold, italic and
+			bold-italic, not because they would have to be sent to the reader, but
+			just to clear up clutter (as I won't need them).
+			30 kilobytes is however still more then needed, as each variant contains
+			over 1500 glyphs, way more then needed! As I write the code-snippets
+			myself, I know that only the standard
+			<a href="https://en.wikipedia.org/wiki/ASCII">7-bit ASCII characters</a>
+			will be used, so if there only was a way to extract a subset of glyphs
+			from a <code>.woff2</code> file...
+		</p>
+
+		<p>
+			To extract the ascii-subset I used pyftsubset from
+			<a href="https://github.com/fonttools/fonttools">fonttools</a>:
+			<pre>$ pyftsubset PixelCode.woff2 \
+	--output-file="PixelCode.mini.woff2" \
+	--flavor=woff2 \
+	--layout-features="" \
+	--unicodes="U+0000-007E"</pre>
+			This disables all special features like
+			<a href="https://en.wikipedia.org/wiki/Ligature_(writing)#Computer_typesetting">ligatures</a>,
+			and extracts the <code>00-127</code> ASCII-range.
+			The result of extracting this subset is that the mini-variant only uses
+			2 kilobytes of data. You can check it yourself in the network tab of
+			your browsers dev-tools.
+		</p>
+	</body>
+</html>
