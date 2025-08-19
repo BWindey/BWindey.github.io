@@ -69,10 +69,9 @@ a:hover {
 
 /* Layout of the main body */
 body {
-	height: 100vh;
 	max-width: 1000px;
 	margin: 0 auto; /* Center it horizontally */
-	padding: 0 3em; /* Some padding for smaller windows */
+	padding: 1em 3em; /* Some padding for smaller windows */
 	color: var(--text-primary);
 	background-color: var(--bg-primary);
 }
