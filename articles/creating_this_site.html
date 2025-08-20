@@ -19,28 +19,34 @@
 		</div>
 
 		<p>
-			While most of the stuff to create this is almost not worth talking about,
-			I wanted to still write a short article about it, mainly to highlight
-			the codesnippets (with their fonts).
+			While writing my own blogging site does not sound that exciting, there were
+			still some fun learning experiences, so let's go meta and write an article
+			about writing articles! I won't focus on HTML and CSS, but more on
+			the initial steps and some info on writing my own code snippets.
 		</p>
 
 		<h2>First steps</h2>
 		<p>
-			First off, hosting. Because I'm cheap, I went with
-			<a href="https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site">
+			First off: hosting. Since I'm cheap, I went with
+			<a href="https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site" target="_blank" rel="noopener noreferrer">
 				GitHub Pages</a>, which
 			you probably noticed with the <code>github.io</code> in the URL.
 			Aside from free hosting, it is also just very easy to work with as it's
-			just a standard git repository that I push. GitHub Pages provides
-			built-in support for <a href="https://jekyllrb.com/">Jekyll</a>, but I
-			felt adventurous and went for my own handwritten HTML and CSS.
-			You can check it out at my GitHub repo:
-			<a href="https://github.com/BWindey/BWindey.github.io">
+			just a standard git repository I can push to. GitHub Pages provides
+			built-in support for
+			<a href="https://jekyllrb.com/" target="_blank" rel="noopener noreferrer">Jekyll</a>,
+			but I felt adventurous and went for my own handwritten HTML and CSS.
+			While Jekyll might have been easier, it wouldn't have been as interesting,
+			and it's also not in the spirit of discovering and gaining experience
+			with fundamental concepts.
+			If you want to read the sourcecode, you can check it out at my GitHub
+			repo:
+			<a href="https://github.com/BWindey/BWindey.github.io" target="_blank" rel="noopener noreferrer">
 				github.com/BWindey/BWindey.github.io</a>.
 		</p>
 
 		<p>
-			The site is organised with an <code>index.html</code> as entry point,
+			The site is structured with an <code>index.html</code> as entry point,
 			a single <code>style.css</code> file that's included in all html files,
 			a folder <code>articles/</code> with all articles as html files and a
 			folder <code>fonts/PixelCode/</code> which hosts the font used for
@@ -63,14 +69,43 @@
 ├── index.html
 └── style.css</pre>
 
+
+		<h2>Colourful codesnippets</h2>
+		<p>
+			Some codesnippets used on this site need syntax-highlighting. Doing so
+			manually would be a big task, as you need to wrap each differently
+			coloured string of text inside something like a <code>span</code> with
+			a CSS class that will apply the right styles.
+			Luckily my favourite editor <a href="https://neovim.io/" target="_blank" rel="noopener noreferrer">
+				neovim</a> has the great
+			<a href="https://neovim.io/doc/user/lua.html#%3ATOhtml" target="_blank" rel="noopener noreferrer">
+				<code>:TOhtml</code> command</a> (actually this originates
+			from <a href="https://www.vim.org/" target="_blank" rel="noopener noreferrer">vim</a> itself).
+			This command produces an html file that perfectly represents the current
+			buffer (which usually just shows the file you're editing) with all
+			styles applied already.
+			To use it here, I copy-paste the html and replace the generated
+			classes with my own more generic solutions:
+			<code>"GruvboxOrange" -> "orange"</code>, <code>"String" -> "green"</code> etc.
+		</p>
+
+		<p>
+			You can use 'inspect element' on the following snippet to see how
+			it is written:
+			<pre>
+<span class="red">def</span> <span class="green bold">main</span><span class="orange">(</span><span class="orange">)</span><span class="orange">:</span>
+    <span class="green bold"><span class="orange">print</span></span><span class="orange">(</span><span class="green">&quot;Hello, World!&quot;</span><span class="orange">)</span></pre>
+		</p>
+
 		<h2>Font</h2>
 		<p>
 			I'm a big fan of the
-			<a href="https://qwerasd205.github.io/PixelCode/">PixelCode font</a>.
+			<a href="https://qwerasd205.github.io/PixelCode/" target="_blank" rel="noopener noreferrer">
+				PixelCode font</a>.
 			Originally I used it for the whole site, but that felt a bit too busy
 			and makes it harder for the reader to set their own font.
 			For codeblocks however I wanted to still leave my mark, and decided to
-			"force" the PixelCode font.
+			"force" the PixelCode font instead of only specifying <code>monospace</code>.
 		</p>
 
 		<p>
@@ -78,33 +113,43 @@
 			I need to distribute it. This is where the fun began. Downloading the font
 			from the website gave a zip of over 600 kilobytes. That made me think,
 			is there a way to not send that many bytes to the reader?
-			The zip contained all variations of the font, each being around 30 kilobytes,
-			so for each variant that's used on the page there will be 30 kilobytes
-			transfered. I removed all variants except for normal, bold, italic and
-			bold-italic, not because they would have to be sent to the reader, but
-			just to clear up clutter (as I won't need them).
-			30 kilobytes is however still more then needed, as each variant contains
-			over 1500 glyphs, way more then needed! As I write the code-snippets
-			myself, I know that only the standard
-			<a href="https://en.wikipedia.org/wiki/ASCII">7-bit ASCII characters</a>
+			Luckily those 600 kilobytes are split over multiple variations of the
+			font, and your browser is smart enough to only request the used variants.
+			But still, each variant is around 30 kilobytes - quite a lot in my opinion -
+			as each variant contains over 1500 glyphs, way more than needed!
+			As I write the code-snippets myself, I know that only the standard
+			<a href="https://en.wikipedia.org/wiki/ASCII" target="_blank" rel="noopener noreferrer">
+				7-bit ASCII characters</a>
 			will be used, so if there only was a way to extract a subset of glyphs
 			from a <code>.woff2</code> file...
 		</p>
 
 		<p>
 			To extract the ascii-subset I used pyftsubset from
-			<a href="https://github.com/fonttools/fonttools">fonttools</a>:
+			<a href="https://github.com/fonttools/fonttools" target="_blank" rel="noopener noreferrer">fonttools</a>:
 			<pre>$ pyftsubset PixelCode.woff2 \
 	--output-file="PixelCode.mini.woff2" \
 	--flavor=woff2 \
 	--layout-features="" \
 	--unicodes="U+0000-007E"</pre>
 			This disables all special features like
-			<a href="https://en.wikipedia.org/wiki/Ligature_(writing)#Computer_typesetting">ligatures</a>,
+			<a href="https://en.wikipedia.org/wiki/Ligature_(writing)#Computer_typesetting" target="_blank" rel="noopener noreferrer">
+				ligatures</a>,
 			and extracts the <code>00-127</code> ASCII-range.
 			The result of extracting this subset is that the mini-variant only uses
-			2 kilobytes of data. You can check it yourself in the network tab of
-			your browsers dev-tools.
+			2 kilobytes of data. You can check this yourself in the network tab of
+			your browser's dev tools.
+		</p>
+
+		<p>
+			I had not expected that writing my own "blog-infrastructure" would yield
+			this kind of interesting problems, but it has been fun!
+			If you have any ideas, suggestions, improvements, ... feel free to
+			leave them in an
+			<a href="https://github.com/BWindey/BWindey.github.io/issues/new/choose" target="_blank" rel="noopener noreferrer">
+				Issue</a> or a
+			<a href="https://github.com/BWindey/BWindey.github.io/discussions/new/choose" target="_blank" rel="noopener noreferrer">
+				Discussion</a> on GitHub.
 		</p>
 	</body>
 </html>
