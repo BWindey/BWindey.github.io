@@ -139,3 +139,15 @@ pre {
 .orange-dim { color: #D65D0E; }
 
 .bold { font-weight: bold; }
+
+/* Small fixes for mobile */
+@media (max-width: 600px) {
+	body {
+		padding: 1em;
+	}
+
+	.header {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+}
