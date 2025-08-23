@@ -118,6 +118,50 @@ pre {
 	font-family: var(--ff-mono);
 }
 
+/* For booklist */
+.title {
+	margin: 0;
+	padding: 0;
+}
+
+.title a {
+	color: var(--yellow);
+	text-decoration: none;
+}
+
+.booklist {
+	list-style-type: "";
+	padding: 1em;
+}
+
+.booklist li {
+	border-left: 6px solid var(--bg-secondary);
+	border-radius: var(--corner-radius);
+	padding-left: 1em;
+}
+
+.description {
+	font-style: italic;
+}
+
+.details {
+	color: var(--text-secondary);
+	font-style: italic;
+}
+
+.details a {
+	color: var(--text-secondary);
+}
+
+details {
+	margin-bottom: 1em;
+}
+
+details p {
+	padding-left: 1em;
+	margin-top: 0em;
+}
+
 
 /* Classes for code snippets */
 .red    { color: #FB4934; }
