@@ -129,6 +129,28 @@ pre {
 	padding: 0;
 }
 
+.title .share-button {
+	margin-left: auto;
+	background: var(--bg-secondary);
+	border-radius: var(--corner-radius);
+	border: none;
+	padding: 0.4em;
+	cursor: pointer;
+	height: 1.8rem;
+	width: 1.8rem;
+	display: flex;
+	align-items: center;
+}
+
+.share-button:hover svg {
+	fill: var(--blue-dim);
+}
+
+.share-button svg {
+	height: 100%;
+	fill: var(--blue);
+}
+
 .title a {
 	color: var(--yellow);
 	text-decoration: none;
