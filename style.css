@@ -120,6 +120,11 @@ pre {
 
 /* For booklist */
 .title {
+	display: flex;
+	align-items: center;
+}
+
+.title h2 {
 	margin: 0;
 	padding: 0;
 }
@@ -137,7 +142,8 @@ pre {
 .booklist li {
 	border-left: 6px solid var(--bg-secondary);
 	border-radius: var(--corner-radius);
-	padding-left: 1em;
+	padding: 0.5em 0 0.5em 1em;
+	margin: 1.5em 0;
 }
 
 .description {
@@ -160,6 +166,10 @@ details {
 details p {
 	padding-left: 1em;
 	margin-top: 0em;
+}
+
+.recommend {
+	margin-bottom: 0;
 }
 
 
