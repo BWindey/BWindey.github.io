@@ -129,6 +129,15 @@ pre {
 	padding: 0;
 }
 
+.title a {
+	color: var(--yellow);
+	text-decoration: none;
+}
+
+.title a:hover {
+	color: var(--yellow-dim);
+}
+
 .title .share-button {
 	margin-left: auto;
 	background: var(--bg-secondary);
@@ -151,11 +160,6 @@ pre {
 	fill: var(--blue);
 }
 
-.title a {
-	color: var(--yellow);
-	text-decoration: none;
-}
-
 .booklist {
 	list-style-type: "";
 	padding: 1em;
@@ -175,6 +179,7 @@ pre {
 .details {
 	color: var(--text-secondary);
 	font-style: italic;
+	font-size: 80%;
 }
 
 .details a {
