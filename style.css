@@ -199,6 +199,16 @@ details p {
 	margin-bottom: 0;
 }
 
+.concern {
+	background-color: rgb(from var(--red) r g b / 0.15);
+	padding: 0.2em 1em;
+	border-radius: var(--corner-radius);
+}
+
+a .concern {
+	padding: 0.1em 0.3em;
+}
+
 
 /* Classes for code snippets */
 .red    { color: #FB4934; }
