@@ -129,6 +129,10 @@ pre {
 	padding: 0;
 }
 
+.title .no_book {
+	color: var(--aqua);
+}
+
 .title a {
 	color: var(--yellow);
 	text-decoration: none;
